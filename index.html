@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>grok-bot-box 主機規格表</title>
+<style>
+  :root{
+    --bg:#f5f6f8; --card:#fff; --ink:#1b2430; --muted:#5d6b7c; --line:#e2e6ec;
+    --accent:#1f5fbf; --accent-soft:#e8f0fc; --ok:#1d7a4c; --ok-soft:#e4f4ec;
+    --warn:#96600a; --warn-soft:#fdf3dc; --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#12161c; --card:#1a2029; --ink:#e6ebf2; --muted:#9aa7b8; --line:#2b3442;
+      --accent:#7fb0ff; --accent-soft:#1d2c44; --ok:#6fd3a0; --ok-soft:#173326; --warn:#f0c064; --warn-soft:#3a2e12; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.65 -apple-system,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif}
+  .wrap{max-width:1040px;margin:0 auto;padding:32px 16px 56px}
+  header{border-bottom:2px solid var(--ink);padding-bottom:16px;margin-bottom:24px}
+  h1{font-size:28px;margin:0 0 4px;letter-spacing:.02em}
+  .sub{color:var(--muted);font-size:14px}
+  .sub code{font-family:var(--mono)}
+  h2{font-size:18px;margin:36px 0 12px;padding-left:10px;border-left:4px solid var(--accent)}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:20px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .kpi .l{font-size:12px;color:var(--muted);letter-spacing:.06em}
+  .kpi .v{font-size:24px;font-weight:700;margin:2px 0;font-variant-numeric:tabular-nums}
+  .kpi .d{font-size:12.5px;color:var(--muted)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child>td{border-bottom:0}
+  thead th{font-size:12px;color:var(--muted);letter-spacing:.05em;background:var(--accent-soft);white-space:nowrap}
+  table.kv td:first-child{width:200px;color:var(--muted);white-space:nowrap}
+  code,.m{font-family:var(--mono);font-size:13px}
+  .num{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:999px;white-space:nowrap}
+  .tag.ok{background:var(--ok-soft);color:var(--ok)}
+  .tag.in{background:var(--accent-soft);color:var(--accent)}
+  .tag.no{background:var(--warn-soft);color:var(--warn)}
+  .bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:6px}
+  .bar i{display:block;height:100%;background:var(--accent)}
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+  .note{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 20px}
+  .note li{margin:8px 0}
+  footer{margin-top:36px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:12px}
+  @media print{body{background:#fff}.wrap{padding:0}.card,.kpi,.note{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>grok-bot-box 主機規格表</h1>
+  <div class="sub">主機名稱 <code>grok-bot-vm-534033869</code>　·　盤點時間 2026-11-15 12:44（台北時間）　·　資料為盤點當下由主機實際讀取</div>
+  <div class="kpis">
+    <div class="kpi"><div class="l">CPU</div><div class="v">8 vCPU</div><div class="d">Intel Xeon（x86_64）</div></div>
+    <div class="kpi"><div class="l">記憶體</div><div class="v">16 GB</div><div class="d">無 swap</div></div>
+    <div class="kpi"><div class="l">系統磁碟</div><div class="v">128 GB</div><div class="d">已用 6.6 GB（6%）</div></div>
+    <div class="kpi"><div class="l">作業系統</div><div class="v">Debian 13</div><div class="d">trixie 13.7 · Kernel 6.12</div></div>
+    <div class="kpi"><div class="l">用途</div><div class="v">Grok Bot</div><div class="d">AI Agent 執行環境</div></div>
+  </div>
+</header>
+
+<h2>一、基本資訊</h2>
+<div class="card"><table class="kv">
+  <tr><td>主機名稱</td><td><code>grok-bot-vm-534033869</code>（Tailscale 節點名稱 <code>grok-bot-box</code>）</td></tr>
+  <tr><td>主機型態</td><td>雲端虛擬機（KVM 全虛擬化 microVM），為 Grok Bot 的 Agent 執行環境（Bot's Computer），架設在 Cursor 的雲端 Agent 基礎設施上，由平台代管</td></tr>
+  <tr><td>作業系統</td><td>Debian GNU/Linux 13（trixie）13.7，64 位元</td></tr>
+  <tr><td>核心版本</td><td><code>6.12.113+</code>（SMP PREEMPT_DYNAMIC，2026-11-06 建置）</td></tr>
+  <tr><td>啟動程序（init）</td><td><code>tini</code> ＋ 平台 <code>pod-daemon</code>；未使用 systemd，服務由平台 supervisor 管理</td></tr>
+  <tr><td>時區／語系</td><td>Asia/Taipei（UTC+8）／<code>zh_TW.UTF-8</code></td></tr>
+  <tr><td>本次開機時間</td><td>2026-11-15 03:06（盤點時已運行 9 小時 37 分）</td></tr>
+  <tr><td>系統負載</td><td class="num">0.10 / 0.39 / 0.47（1 / 5 / 15 分鐘平均），行程數 136</td></tr>
+</table></div>
+
+<h2>二、硬體資源</h2>
+<div class="cols">
+  <div class="card"><table class="kv">
+    <thead><tr><th colspan="2">CPU</th></tr></thead>
+    <tr><td>型號</td><td>Intel Xeon Processor（family 6 / model 207）</td></tr>
+    <tr><td>核心數</td><td>8 vCPU（1 socket × 8 cores × 1 thread）</td></tr>
+    <tr><td>架構</td><td>x86_64，46-bit 實體／57-bit 虛擬位址</td></tr>
+    <tr><td>快取</td><td>L1d 384 KiB · L1i 256 KiB · L2 16 MiB · L3 320 MiB</td></tr>
+    <tr><td>指令集</td><td>AVX2、AVX-512（含 VNNI / BF16 / FP16）、AMX、AES-NI、SHA-NI</td></tr>
+    <tr><td>Hypervisor</td><td>KVM，支援 VT-x</td></tr>
+    <tr><td>NUMA</td><td>1 個節點（CPU 0–7）</td></tr>
+  </table></div>
+  <div class="card"><table class="kv">
+    <thead><tr><th colspan="2">記憶體</th></tr></thead>
+    <tr><td>總量</td><td class="num">16,386,416 kB（約 15.6 GiB，標稱 16 GB）</td></tr>
+    <tr><td>盤點當下使用</td><td class="num">12.5 GiB 已用 · 2.5 GiB 快取 · 1.2 GiB 閒置
+      <div class="bar"><i style="width:78%"></i></div></td></tr>
+    <tr><td>可用（available）</td><td class="num">約 3.4 GiB</td></tr>
+    <tr><td>應用程式實際佔用</td><td class="num">約 1.7 GiB（AnonPages）</td></tr>
+    <tr><td>Swap</td><td>未設定（0 B）</td></tr>
+    <tr><td>共享記憶體</td><td><code>/dev/shm</code> tmpfs 上限 7.9 GiB</td></tr>
+  </table></div>
+</div>
+
+<h2>三、儲存空間</h2>
+<div class="card"><table>
+  <thead><tr><th>裝置</th><th>容量</th><th>檔案系統</th><th>掛載點</th><th>已用</th><th>可用</th><th>使用率</th></tr></thead>
+  <tr><td><code>/dev/vdb</code></td><td class="num">128 GB</td><td>ext4</td><td><code>/</code></td><td class="num">6.6 GB</td><td class="num">121 GB</td><td class="num">6%<div class="bar"><i style="width:6%"></i></div></td></tr>
+  <tr><td><code>/dev/vda</code></td><td class="num">128 GB</td><td>—</td><td>未掛載（平台開機映像磁碟）</td><td>—</td><td>—</td><td>—</td></tr>
+  <tr><td><code>cursor-agent-store</code></td><td>—</td><td>FUSE</td><td><code>/cursor/stores</code></td><td colspan="3">平台提供的遠端 Agent 資料儲存區</td></tr>
+</table></div>
+<p class="sub" style="margin:8px 2px 0">inode 使用 117,919 / 2,048,000（6%）。主要目錄佔用：<code>/usr</code> 3.8 GB、<code>/opt</code> 1.1 GB、<code>/home</code> 945 MB、<code>/tmp</code> 367 MB、<code>/exec-daemon</code> 338 MB、<code>/var</code> 121 MB。</p>
+
+<h2>四、網路</h2>
+<div class="card"><table>
+  <thead><tr><th>介面</th><th>狀態</th><th>位址</th><th>用途</th></tr></thead>
+  <tr><td><code>enp0s3</code></td><td><span class="tag ok">UP</span></td><td class="m">172.30.0.2/24</td><td>主要網卡（私有網段），預設閘道 172.30.0.1</td></tr>
+  <tr><td><code>tailscale0</code></td><td><span class="tag ok">UP</span></td><td class="m">100.73.108.110/32</td><td>Tailscale 私有網路（v1.104.7），遠端管理由此進入</td></tr>
+  <tr><td><code>docker0</code></td><td><span class="tag no">DOWN</span></td><td class="m">172.17.0.1/16</td><td>預留橋接介面，目前未使用</td></tr>
+  <tr><td><code>lo</code></td><td><span class="tag ok">UP</span></td><td class="m">127.0.0.1/8</td><td>本機迴路</td></tr>
+</table></div>
+<div class="card" style="margin-top:12px"><table class="kv">
+  <tr><td>對外 IP</td><td>無固定公網 IP；主機位於私有網段，對外連線經平台出口通道（egress tunnel）</td></tr>
+  <tr><td>DNS</td><td class="m">10.0.0.2</td></tr>
+  <tr><td>遠端登入</td><td>Tailscale SSH（僅限同一 tailnet 的已授權裝置，以 Tailscale 身分驗證，不開放公網 22 埠）</td></tr>
+  <tr><td>防火牆</td><td>nftables：Tailscale 規則鏈（<code>ts-input</code> / <code>ts-forward</code>）＋瀏覽器行程的出站限制規則；未安裝 ufw</td></tr>
+</table></div>
+
+<h2>五、監聽連接埠</h2>
+<div class="card"><table>
+  <thead><tr><th>埠號</th><th>協定</th><th>綁定位址</th><th>行程</th><th>用途</th></tr></thead>
+  <tr><td class="num">22</td><td>TCP</td><td>Tailscale</td><td><code>tailscaled</code></td><td>Tailscale SSH 遠端登入</td></tr>
+  <tr><td class="num">2022</td><td>TCP</td><td>127.0.0.1</td><td><code>dropbear</code></td><td>本機 SSH 服務（僅限本機）</td></tr>
+  <tr><td class="num">1337 / 1338</td><td>TCP</td><td>全部</td><td><code>exec-daemon</code>（node）</td><td>Agent 指令執行 API／終端機 WebSocket（桌面 1）</td></tr>
+  <tr><td class="num">14002 / 13602</td><td>TCP</td><td>全部</td><td><code>exec-daemon</code>（node）</td><td>同上（桌面 2）</td></tr>
+  <tr><td class="num">1339</td><td>TCP</td><td>全部</td><td><code>sand-window-router</code></td><td>多桌面視窗路由</td></tr>
+  <tr><td class="num">1340</td><td>TCP</td><td>全部</td><td><code>sand-host</code>（node）</td><td>Agent 主控程式</td></tr>
+  <tr><td class="num">6080 / 6081</td><td>TCP</td><td>全部</td><td><code>websockify</code></td><td>noVNC 網頁遠端桌面（6081 需 token）</td></tr>
+  <tr><td class="num">5900 / 5902</td><td>TCP</td><td>127.0.0.1</td><td><code>x11vnc</code></td><td>VNC（桌面 :1／:2，僅限本機）</td></tr>
+  <tr><td class="num">8790 / 8791</td><td>TCP</td><td>全部／127.0.0.1</td><td><code>sand-egress-tunnel</code></td><td>對外連線出口通道</td></tr>
+  <tr><td class="num">26500</td><td>TCP</td><td>全部</td><td><code>pod-daemon</code></td><td>平台管理代理程式</td></tr>
+  <tr><td class="num">2375 / 50052</td><td>TCP</td><td>全部</td><td>平台層（主機內查無對應行程）</td><td>平台保留埠</td></tr>
+  <tr><td class="num">55200</td><td>UDP</td><td>全部</td><td><code>tailscaled</code></td><td>Tailscale WireGuard 通道</td></tr>
+</table></div>
+<p class="sub" style="margin:8px 2px 0">「全部」表示綁定 0.0.0.0，但主機沒有公網 IP，實際僅能由私有網段與 Tailscale 存取。</p>
+
+<h2>六、執行中的服務</h2>
+<div class="card"><table>
+  <thead><tr><th>類別</th><th>服務</th><th>說明</th></tr></thead>
+  <tr><td rowspan="5">平台核心</td><td><code>pod-daemon</code>（PID 1 下）</td><td>虛擬機的主管理程式，負責 SSH agent 轉送與身分驗證</td></tr>
+  <tr><td><code>sand-supervisor</code> ×2</td><td>服務監督程式，行程異常時自動重啟</td></tr>
+  <tr><td><code>sand-host</code></td><td>Agent 主控程式（記憶體佔用最高，約 480 MB）</td></tr>
+  <tr><td><code>exec-daemon</code> ×2</td><td>指令執行與終端機服務</td></tr>
+  <tr><td><code>orbitd</code>、<code>sand-exit-watch</code>、<code>sand-memory-watch</code>、<code>cursor-agent-store-fuse</code></td><td>平台常駐程式、離線／記憶體監控、遠端儲存掛載</td></tr>
+  <tr><td rowspan="3">虛擬桌面<br>（共 2 組）</td><td><code>Xvfb</code> :1、:2</td><td>虛擬顯示器，各 1920×1200、24-bit 色深</td></tr>
+  <tr><td><code>xfwm4</code>、<code>xfce4-panel</code>、<code>picom</code></td><td>Xfce 視窗管理員、面板與合成器</td></tr>
+  <tr><td><code>x11vnc</code>、<code>websockify</code>（noVNC）、<code>pulseaudio</code>、<code>dbus</code>、<code>gnome-keyring</code></td><td>遠端桌面、音訊、訊息匯流排與密碼鑰匙圈</td></tr>
+  <tr><td rowspan="2">瀏覽器自動化</td><td><code>sand-playwright-runtime</code></td><td>以 Playwright／CDP 控制 Chrome</td></tr>
+  <tr><td><code>sand-cookie-persist</code>、<code>sand-session-sync</code>、<code>sand-web-bot-auth</code>、<code>sand-ua-governor</code></td><td>瀏覽器登入狀態保存與同步、身分與 User-Agent 管理</td></tr>
+  <tr><td rowspan="3">網路與連線</td><td><code>tailscaled</code></td><td>Tailscale 私有網路與 Tailscale SSH</td></tr>
+  <tr><td><code>sand-egress-tunnel</code></td><td>對外連線出口通道</td></tr>
+  <tr><td><code>dropbear</code>、<code>autossh</code></td><td>本機 SSH 服務與常駐 SSH 通道</td></tr>
+</table></div>
+
+<h2>七、已安裝軟體</h2>
+<p class="sub" style="margin:0 2px 10px">Debian 套件共 755 個；套件來源為 Debian 官方（trixie、trixie-updates、trixie-security）與 Google Chrome 官方來源。</p>
+<div class="cols">
+  <div class="card"><table>
+    <thead><tr><th>程式語言與執行環境</th><th>版本</th></tr></thead>
+    <tr><td>Python</td><td class="num">3.13.5</td></tr>
+    <tr><td>pip／uv</td><td class="num">25.1.1／0.13.7</td></tr>
+    <tr><td>Node.js</td><td class="num">24.22.1（平台另內建 22.23.4）</td></tr>
+    <tr><td>npm／Corepack</td><td class="num">11.21.1／0.36.0（pnpm 經 Corepack）</td></tr>
+    <tr><td>Bun</td><td class="num">1.4.4</td></tr>
+    <tr><td>Go</td><td class="num">1.27.3</td></tr>
+    <tr><td>Rust（rustc／cargo）</td><td class="num">1.85.1</td></tr>
+    <tr><td>GCC</td><td class="num">14.2.0</td></tr>
+    <tr><td>Bash</td><td class="num">5.2.37</td></tr>
+  </table></div>
+  <div class="card"><table>
+    <thead><tr><th>開發與系統工具</th><th>版本</th></tr></thead>
+    <tr><td>Git／GitHub CLI</td><td class="num">2.47.3／2.103.0</td></tr>
+    <tr><td>curl／wget</td><td class="num">8.14.1／1.25.0</td></tr>
+    <tr><td>OpenSSL／OpenSSH client</td><td class="num">3.5.7／10.0p2</td></tr>
+    <tr><td>Tailscale</td><td class="num">1.104.7</td></tr>
+    <tr><td>jq／ripgrep</td><td class="num">1.7.1／14.1.1</td></tr>
+    <tr><td>tmux／unzip</td><td class="num">3.5a／6.00</td></tr>
+    <tr><td>FFmpeg</td><td class="num">7.1.5</td></tr>
+    <tr><td>yt-dlp</td><td class="num">2026.10.26</td></tr>
+    <tr><td>pi（coding agent CLI）</td><td>使用者目錄安裝</td></tr>
+  </table></div>
+  <div class="card"><table>
+    <thead><tr><th>瀏覽器與桌面環境</th><th>版本</th></tr></thead>
+    <tr><td>Google Chrome</td><td class="num">156.0.8078.47</td></tr>
+    <tr><td>ungoogled-chromium</td><td><code>/opt</code> 內建</td></tr>
+    <tr><td>Playwright（core／MCP）</td><td>平台內建</td></tr>
+    <tr><td>Xvfb</td><td class="num">21.1.16</td></tr>
+    <tr><td>Xfce（xfwm4／panel）</td><td class="num">4.20.0／4.20.4</td></tr>
+    <tr><td>xfce4-terminal／Thunar</td><td class="num">1.1.4／4.20.2</td></tr>
+    <tr><td>x11vnc／noVNC／websockify</td><td class="num">0.9.17／1.6.0／0.12.0</td></tr>
+    <tr><td>PulseAudio／picom</td><td class="num">17.0／12.5</td></tr>
+    <tr><td>xdotool／gnome-keyring</td><td class="num">3.20160805／48.0</td></tr>
+  </table></div>
+  <div class="card"><table>
+    <thead><tr><th>文件與資料處理函式庫</th><th>版本</th></tr></thead>
+    <tr><td>pandas／NumPy</td><td class="num">3.0.6／2.5.4</td></tr>
+    <tr><td>python-docx／python-pptx</td><td class="num">1.2.0／1.0.2</td></tr>
+    <tr><td>openpyxl／XlsxWriter</td><td class="num">3.1.5／3.3.1</td></tr>
+    <tr><td>markitdown／mammoth</td><td class="num">0.1.7／1.11.0</td></tr>
+    <tr><td>BeautifulSoup／lxml</td><td class="num">4.15.0／6.1.3</td></tr>
+    <tr><td>requests／Pillow</td><td class="num">2.34.2／13.0.0</td></tr>
+    <tr><td>onnxruntime</td><td class="num">1.31.1</td></tr>
+    <tr><td>docx／pptxgenjs（npm 全域）</td><td class="num">9.8.1／4.0.1</td></tr>
+    <tr><td>字型</td><td>Noto Sans CJK（含 TC）、Noto Color Emoji、Liberation、DejaVu</td></tr>
+  </table></div>
+</div>
+<div class="card" style="margin-top:16px"><table class="kv">
+  <tr><td>未安裝</td><td>Docker、make、資料庫伺服器（PostgreSQL／MySQL／Redis）、網頁伺服器（nginx／Apache）、Java、Ruby、PHP、.NET、vim／nano、rsync、zip</td></tr>
+</table></div>
+
+<h2>八、帳號與排程</h2>
+<div class="card"><table>
+  <thead><tr><th>帳號</th><th>UID</th><th>家目錄</th><th>說明</th></tr></thead>
+  <tr><td><code>root</code></td><td class="num">0</td><td><code>/root</code></td><td>系統管理員</td></tr>
+  <tr><td><code>box</code></td><td class="num">1000</td><td><code>/home/box</code></td><td>主要操作帳號，具免密碼 sudo 權限；遠端登入即使用此帳號</td></tr>
+  <tr><td><code>sand-host</code>、<code>orbitd</code></td><td>—</td><td>—</td><td>平台服務專用帳號</td></tr>
+</table></div>
+<div class="card" style="margin-top:12px"><table class="kv">
+  <tr><td>排程工作（cron）</td><td>僅系統每日工作：<code>apt-compat</code>、<code>dpkg</code>、<code>google-chrome</code>（更新套件來源）；無使用者自訂排程</td></tr>
+  <tr><td>家目錄使用量</td><td><code>chrome-profile</code> 566 MB、<code>.pi</code> 162 MB、<code>.cache</code> 146 MB，其餘合計不到 100 MB</td></tr>
+</table></div>
+
+<h2>九、Agent 執行平台（LLM runtime）</h2>
+<div class="card"><table class="kv">
+  <tr><td>所屬產品</td><td>Grok Bot（xAI Grok 的 AI Agent 應用），本機即 App 中的「Bot's Computer」</td></tr>
+  <tr><td>底層基礎設施</td><td>Cursor（Anysphere）雲端 Agent 平台；後端端點 <code>api2.cursor.sh</code>，叢集代號 <code>us13</code></td></tr>
+  <tr><td>主機在架構中的角色</td><td>工具執行端：提供 Shell、螢幕截圖、桌面操作（Computer Use）與 Chrome 瀏覽器給 Agent 使用</td></tr>
+  <tr><td>LLM 推論位置</td><td>在平台後端執行，不在本機；本機未安裝任何模型權重或推論引擎，也沒有 GPU</td></tr>
+  <tr><td>使用模型</td><td>主機內的 Agent 設定未記載模型名稱；主控程式中列出的模型以 <code>grok-4.6</code>、<code>grok-4.5</code> 為主，實際版本需由 Grok Bot App 的設定或用量頁確認</td></tr>
+  <tr><td>Agent 主控程式</td><td><code>/opt/sand/sand-host/host-main.cjs</code>（harness 名稱 <code>grok-bot-harness</code>，本機 Agent 的 harness 設定為 <code>temporal</code>）</td></tr>
+  <tr><td>映像版本</td><td>git SHA <code>ea33472</code>，開機快照 <code>sand-box-01b885954bde-amd64</code></td></tr>
+  <tr><td>主機建立時間</td><td>2026-11-09 23:17（台北時間）</td></tr>
+  <tr><td>Agent 數量</td><td>1 個 Agent，使用第 2 組虛擬桌面（display :2）；平台上限 100 組桌面</td></tr>
+  <tr><td>已快取外掛</td><td>Gmail、Google Calendar、Google Drive、Finance</td></tr>
+  <tr><td>平台內建技能</td><td>桌面操作、簡報製作、Microsoft Teams、網站操作手冊（Redfin、Craigslist 等）、Bot 範本匯出</td></tr>
+  <tr><td>資料保存</td><td>Agent 資料存放於 <code>/home/box/sand-data</code>，並同步至平台遠端儲存區（<code>/cursor/stores</code>）；檔案與已安裝工具在多次對話間保留</td></tr>
+  <tr><td>主機重建</td><td>App 的「Update Bot's Computer」會換到新的 instance，保留檔案與登入狀態，但自行安裝的軟體需重裝</td></tr>
+</table></div>
+
+<h2>十、備註</h2>
+<div class="note"><ul>
+  <li>本機是 Grok Bot 的工具執行環境，LLM 本身不在這台主機上運算，因此主機規格影響的是瀏覽器與工具的執行效能，不影響模型回應品質。</li>
+  <li>本機為平台代管的 microVM，CPU、記憶體與磁碟規格由平台方案決定；主機內沒有 systemd，無法使用 <code>systemctl</code> 管理服務。</li>
+  <li>記憶體「已用」12.5 GiB 當中，主機內應用程式實際佔用約 1.7 GiB，其餘為平台層保留與快取；盤點當下可用記憶體約 3.4 GiB。</li>
+  <li>未設定 swap，記憶體用盡時行程會直接被系統終止，高記憶體用量的工作需預留餘裕。</li>
+  <li>主機內建兩組虛擬桌面與 Chrome 供 Agent 操作，未安裝資料庫或網頁伺服器等對外服務。</li>
+  <li>以上數值為 2026-11-15 12:44 的單一時點快照，使用量類數字會隨工作負載變動。</li>
+</ul></div>
+
+<footer>資料來源：主機上執行 <code>lscpu</code>、<code>free</code>、<code>lsblk</code>、<code>df</code>、<code>ip</code>、<code>ss</code>、<code>ps</code>、<code>dpkg</code>、<code>nft</code> 等唯讀指令取得，未變更主機任何設定。</footer>
+</div>
+</body>
+</html>
